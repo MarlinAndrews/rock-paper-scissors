@@ -8,22 +8,56 @@
 <body>
     <script>
 
-        function getComputerChoice() {
+    function getComputerChoice() {
+
     let randomChoice = Math.floor(Math.random() * 3);
     // Randomly choose between 0, 1, or 2
 
-    if (randomChoice === 0) {
-        return "Rock";
-    } else if (randomChoice === 1) {
-        return "Paper";
-    } else {
-        return "Scissors";
-    }
+        if (randomChoice === 0) {
+            return "rock";
+        } else if (randomChoice === 1) {
+            return "paper";
+        } else {
+            return "scissors";
+        }
 }
 
-// Call the function and store the result in a variable
-let computerChoice = getComputerChoice();
-console.log(computerChoice);
+    function playRound(playerSelection, computerSelection) {
+    // compares player and computers results and declares a winner
+
+    playerSelection = playerSelection.toLowerCase();
+    computerSelection = computerSelection.toLowerCase();
+    
+    if (playerSelection === 'rock' && computerSelection === 'scissors'){
+        return "rock beats scissors, you win!"
+
+    } else if (playerSelection === 'paper' && computerSelection === 'rock') { 
+        return "paper beats rock, you win!"
+
+    } else if (playerSelection === 'scissors' && computerSelection === 'paper'){
+        return "scissors beats paper, you win!"
+        
+    } else if (computerSelection === 'rock' && playerSelection === 'scissors'){
+        return "rock beats scissors, computer wins!"
+        
+    } else if(computerSelection === 'paper' && playerSelection === 'rock'){ 
+        return "paper beats rock, computer wins!"
+               
+    } else if (computerSelection === 'scissors' && playerSelection === 'paper')  {
+        return "scissors beats paper, computer wins!"
+    } else {
+        return "It's a tie";
+    }
+
+}
+
+    let computerChoice = getComputerChoice();
+
+    let playerSelected = "rock";
+
+    console.log(playRound(playerSelected, computerChoice));
+
+    //currently only outputs "It's a tie"
 
 
 
