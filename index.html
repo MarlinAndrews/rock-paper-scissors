@@ -7,7 +7,27 @@
 </head>
 <body>
     <script>
+        //create button rock
+        const rockBtn = document.createElement('button');
+        rockBtn.textContent = "Rock";
+        //event listener than calls singleRound
+        rockBtn.addEventListener('click', playGame;
+        document.body.appendChild(rockBtn);
 
+        //create button paper
+        const paperBtn = document.createElement('button');
+        paperBtn.textContent = 'Paper';
+        //event listener than calls singleRound
+        paperBtn.addEventListener('click', playGame);
+        document.body.appendChild(paperBtn);
+
+
+        //create button scissors
+        const scissorsBtn = document.createElement('button');
+        scissorsBtn.textContent = "Scissors";
+        //event listener than calls singleRound
+        scissorsBtn.addEventListener('click', playGame);
+        document.body.appendChild(scissorsBtn);
 
     function getComputerChoice() {
     //randomly choose rock, paper or scissors
