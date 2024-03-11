@@ -11,7 +11,7 @@
         const rockBtn = document.createElement('button');
         rockBtn.textContent = "Rock";
         //event listener than calls singleRound
-        rockBtn.addEventListener('click', playGame;
+        rockBtn.addEventListener('click', playGame);
         document.body.appendChild(rockBtn);
 
         //create button paper
@@ -28,6 +28,11 @@
         //event listener than calls singleRound
         scissorsBtn.addEventListener('click', playGame);
         document.body.appendChild(scissorsBtn);
+
+ 
+        //create display container
+        const displayDiv = document.createElement('div');
+        document.body.appendChild(displayDiv);
 
     function getComputerChoice() {
     //randomly choose rock, paper or scissors
@@ -76,35 +81,51 @@
 
 function playGame(){
     
+    //keeps player and computer score
     let playerScore = 0;
     let computerScore = 0;
 
-    for (let gameRound = 1; gameRound < 6; gameRound ++) {
+    // starts round at 1 and goes to 5
+    // for (let gameRound = 1; gameRound < 6; gameRound ++) {
 
+        //generates random computer choice per round
         let computerChoice = getComputerChoice();
+        //asks player choice per round
         let playerSelected = prompt("rock, paper, or scissors?")
+        // runs winning condition and returns results
         let roundResult = singleRound(playerSelected, computerChoice);
-        console.log(roundResult);
 
+
+        // Create a new paragraph element to display the message
+        let messageParagraph = document.createElement('p');
+        messageParagraph.textContent = roundResult;
+        // Append the message to the container
+        displayDiv.appendChild(messageParagraph);
+
+        //displays results
         if (roundResult.includes("you win")) {
             playerScore++;
         } else if (roundResult.includes("computer wins")) {
             computerScore++;
         }
 
-    }
-    console.log("You scored " + playerScore + " and the computer scored " + computerScore);
+    // }
+
+    //overall game results
+   let resultMessage = document.createElement('p');
+   resultMessage.textContent = "You scored " + playerScore + " and the computer scored " + computerScore;
+   displayDiv.appendChild(resultMessage);
+
     if (playerScore > computerScore){
-        console.log("You win the game!")
+        resultMessage.textContent += "\nYou win the game!";
     }else if (computerScore > playerScore){
-        console.log("Computer wins the game!")
+        resultMessage.textContent += "\nComputer wins the game!";
     } else{
-        console.log("The game was a tie!")
+        resultMessage.textContent += "\nThe game was a tie!";
     }
     
 }
 
-playGame();
 
     
 
